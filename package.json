@@ -1,6 +1,6 @@
 {
   "name": "stepperbox",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Testing library for creating mock functions with sequential behavior",
   "main": "index.js",
   "scripts": {
