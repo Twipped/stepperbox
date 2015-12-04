@@ -1,0 +1,25 @@
+{
+  "name": "stepperbox",
+  "version": "0.0.1",
+  "description": "Testing library for creating mock functions with sequential behavior",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jarvis Badgley <chiper@chipersoft.com> (http://chipersoft.com/)",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "unit",
+    "integration",
+    "integration testing",
+    "unit testing",
+    "mock",
+    "stub",
+    "spy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChiperSoft/stepperbox.git"
+  }
+}
