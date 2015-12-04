@@ -7,7 +7,7 @@ npm install --save-dev stepperbox
 
 StepperBox is a testing library for creating stub functions that invoke different callbacks at different steps. It works similarly to a Sinon spy, but is much simpler in its implementation and usage.  This allows you to create much more explicit mock behavior without knowing any cryptic API.
 
-###Example
+### Example
 ```js
 var stepperbox    = require('stepperbox');
 var stepper = stepperbox();
@@ -43,33 +43,33 @@ stepper.add(function (calledas, query, data) {
 });
 ```
 
-##Usage
+## Usage
 
-####`stepperbox([steps])`
+#### `stepperbox([steps])`
 
 Returns a stepper instance, a chainable class for defining the callbacks for each step.  An array of callbacks may be provided to be used as the initial steps.
 
-####`stepper.add(callback)`
+#### `stepper.add(callback)`
 
 Appends a callback step to the end of the current chain
 
-####`stepper.onCall(index, callback)`
+#### `stepper.onCall(index, callback)`
 
 Inserts a callback step at the specified index (0 based) in the sequence.
 
-####`stepper.onFirstCall(callback)`, `stepper.onSecondCall(callback)`, `stepper.onThirdCall(callback)`
+#### `stepper.onFirstCall(callback)`, `stepper.onSecondCall(callback)`, `stepper.onThirdCall(callback)`
 
 Syntactic sugar for `onCall`. Inserts a callback step at the first, second or third positions, respectively.
 
-####`stepper.reset()`
+#### `stepper.reset()`
 
 Resets the stepper position to the first step.
 
-####`stepper.reset(true)`
+#### `stepper.reset(true)`
 
 Resets the stepper position, and removes all existing steps.
 
-####`stepper.reset(<Array>)`
+#### `stepper.reset(<Array>)`
 
 Resets the stepper position, and overwrites all existing steps with the callbacks provided in the array.
 
