@@ -4,13 +4,22 @@ module.exports = function (expected) {
 	var step = 0;
 
 	var stub = function () {
-		if (step > steps.length - 1) throw new Error('Stepper was called too many times.');
+		if (step > steps.length - 1) {
+		  var tooManyTimes = 'Stepper was called too many times. Offending arguments:';
+		  for( var argIndex in arguments) {
+		    tooManyTimes += '\n index: ' + argIndex + ' value: ' + arguments[argIndex];
+		  }
+		  throw new Error(tooManyTimes);
+		}
 
 		return steps[step++].apply(null, arguments);
 	};
 
-	stub.add = function (fn) {
-		steps.push(fn);
+	stub.add = function (fn, count) {
+	  count = count || 1;
+	  for(var i = 0; i < count; i++) {
+	    steps.push(fn);
+	  }
 		return stub;
 	};
 
