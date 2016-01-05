@@ -5,11 +5,11 @@ module.exports = function (expected) {
 
 	var stub = function () {
 		if (step > steps.length - 1) {
-		  var tooManyTimes = 'Stepper was called too many times. Offending arguments:';
-		  for( var argIndex in arguments) {
-		    tooManyTimes += '\n index: ' + argIndex + ' value: ' + arguments[argIndex];
-		  }
-		  throw new Error(tooManyTimes);
+			var tooManyTimes = 'Stepper was called too many times. Offending arguments:';
+			for( var argIndex in arguments) {
+				tooManyTimes += '\n index: ' + argIndex + ' value: ' + arguments[argIndex];
+			}
+			throw new Error(tooManyTimes);
 		}
 
 		return steps[step++].apply(null, arguments);
