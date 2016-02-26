@@ -4,7 +4,7 @@
   "description": "Testing library for creating mock functions with sequential behavior",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap tests"
   },
   "author": "Jarvis Badgley <chiper@chipersoft.com> (http://chipersoft.com/)",
   "license": "MIT",
@@ -21,5 +21,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ChiperSoft/stepperbox.git"
+  },
+  "devDependencies": {
+    "tap": "~5.7.0"
   }
 }
