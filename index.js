@@ -47,6 +47,7 @@ module.exports = function (expected) {
 		} else if (newsteps === true) {
 			steps = [];
 		}
+		return stub;
 	};
 
 	stub.as = function (name) {
