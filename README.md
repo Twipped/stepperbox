@@ -49,7 +49,15 @@ stepper.add(function (method, query, data) {
 
 #### `stepperbox([steps])`
 
-Returns a stepper instance, a chainable class for defining the callbacks for each step.  An array of callbacks may be provided to be used as the initial steps.
+Returns a stepper instance, a callable function with chainable methods defining the behavior of the function at each invocation.  An array of callbacks may be provided to be used as the initial steps.
+
+#### `stepper([arg1, ...])`
+
+Calling the stepper function invokes each defined step as if it had been called directly, passing in all arguments received.
+
+#### `stepper.as('name')`
+
+Returns a standalone function (without the stepper methods) which will be bound with the provided name as the first argument received (see the mysql example above).
 
 #### `stepper.add(callback)`
 
