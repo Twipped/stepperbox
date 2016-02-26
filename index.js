@@ -49,5 +49,9 @@ module.exports = function (expected) {
 		}
 	};
 
+	stub.as = function (name) {
+		return stub.bind(null, name);
+	};
+
 	return stub;
 };

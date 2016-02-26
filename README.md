@@ -27,17 +27,17 @@ stepper(6);
 // "Step 2", 6
 ```
 
-This can be further extended for testing by using `Function.prototype.bind` to create curried versions of the stepper for mocking multiple pieces.  The below example shows how you could use stepper with proxyquire to mock a `mysql.query` dependency.
+This can be further extended for testing by using `Function.prototype.bind` to create curried versions of the stepper for stubbing multiple pieces.  The below example shows how you could use stepper with proxyquire to stub the query function on a mysql connection pool.
 
 ```js
 var mymodule = proxyquire('path/to/mymodule', {
-  mysql: {
-    query: stepper.bind('mysql.query');
+  '../db/mysql': {
+    query: stepper.as('mysql.query');
   }
 });
 
-stepper.add(function (calledas, query, data) {
-  assert.equal(calledas, 'mysql.query');
+stepper.add(function (method, query, data) {
+  assert.equal(method, 'mysql.query');
   assert.equal(query, 'SELECT NOW()');
   assert.deepEqual(data, []);
 });
