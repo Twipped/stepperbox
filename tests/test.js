@@ -6,15 +6,12 @@ test('stepperbox - simple adds', function (t) {
 	t.plan(3);
 
 	var stepper = stepperbox();
+
 	stepper.add(function (value) {
 		t.equal(value, 1, 'step 1');
-	});
-
-	stepper.add(function (value) {
+	}).add(function (value) {
 		t.equal(value, 2, 'step 2');
-	});
-
-	stepper.add(function (value) {
+	}).add(function (value) {
 		t.equal(value, 3, 'step 3');
 	});
 
@@ -30,19 +27,14 @@ test('stepperbox - explicit adds', function (t) {
 	t.plan(4);
 
 	var stepper = stepperbox();
+
 	stepper.onThirdCall(function (value) {
 		t.equal(value, 3, 'step 3');
-	});
-
-	stepper.onFirstCall(function (value) {
+	}).onFirstCall(function (value) {
 		t.equal(value, 1, 'step 1');
-	});
-
-	stepper.onCall(3, function (value) {
+	}).onCall(3, function (value) {
 		t.equal(value, 4, 'step 4');
-	})
-
-	stepper.onSecondCall(function (value) {
+	}).onSecondCall(function (value) {
 		t.equal(value, 2, 'step 2');
 	});
 
@@ -112,8 +104,8 @@ test('stepperbox - reset step', function (t) {
 	});
 
 	stepper(1);
-	stepper.reset();
-	stepper(1);
+	stepper.reset()(1)
+	// stepper(1);
 	stepper(2);
 
 	t.end();
@@ -195,6 +187,22 @@ test('stepperbox - throws when called too much', function (t) {
 	t.end();
 });
 
+test('stepperbox - return values', function (t) {
+	t.plan(2);
+
+	var stepper = stepperbox();
+	stepper.add(function (as, value) {
+		return 5;
+	});
+	stepper.add(function (as, value) {
+		return 'foo';
+	});
+
+	t.equal(stepper(), 5, 'returned the return value of step 1.');
+	t.equal(stepper(), 'foo', 'returned the return value of step 2.');
+
+	t.end();
+});
 
 test('stepperbox - as', function (t) {
 	t.plan(3);
