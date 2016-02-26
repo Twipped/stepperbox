@@ -1,3 +1,9 @@
+1.2.1 / 2016-02-26
+==================
+
+  * Fix stepper.reset() not returning stepper for chaining.
+  * Added test suite.
+
 1.2.0 / 2016-02-26
 ==================
 
