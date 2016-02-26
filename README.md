@@ -1,6 +1,8 @@
 Stepperbox
 ==================
 
+[![Build Status](https://travis-ci.org/ChiperSoft/stepperbox.svg?branch=master)](https://travis-ci.org/ChiperSoft/stepperbox)
+
 ```
 npm install --save-dev stepperbox
 ```
