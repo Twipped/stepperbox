@@ -83,3 +83,6 @@ Resets the stepper position, and removes all existing steps.
 
 Resets the stepper position, and overwrites all existing steps with the callbacks provided in the array.
 
+#### `stepper.getStep()`
+
+Returns the current step position as a zero based integer.
