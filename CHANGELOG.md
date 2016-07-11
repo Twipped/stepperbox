@@ -1,3 +1,8 @@
+1.3.0 / 2016-07-11
+==================
+
+  * Added stepper.getStep() which returns the current step position (zero based).
+
 1.2.1 / 2016-02-26
 ==================
 

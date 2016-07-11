@@ -3,7 +3,7 @@ var test = require('tap').test;
 var stepperbox = require('../index');
 
 test('stepperbox - simple adds', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	var stepper = stepperbox();
 
@@ -19,12 +19,14 @@ test('stepperbox - simple adds', function (t) {
 	stepper(2);
 	stepper(3);
 
+	t.equal(stepper.getStep(), 3);
+
 	t.end();
 });
 
 test('stepperbox - explicit adds', function (t) {
 	// No sane person would do this, but just in case they do, lets make sure it works
-	t.plan(4);
+	t.plan(5);
 
 	var stepper = stepperbox();
 
@@ -43,12 +45,14 @@ test('stepperbox - explicit adds', function (t) {
 	stepper(3);
 	stepper(4);
 
+	t.equal(stepper.getStep(), 4);
+
 	t.end();
 });
 
 
 test('stepperbox - initialized with functions', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	var stepper = stepperbox([
 		function (value) {
@@ -67,11 +71,13 @@ test('stepperbox - initialized with functions', function (t) {
 	stepper(2);
 	stepper(3);
 
+	t.equal(stepper.getStep(), 3);
+
 	t.end();
 });
 
 test('stepperbox - add with multiplier', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	var stepper = stepperbox();
 
@@ -88,11 +94,13 @@ test('stepperbox - add with multiplier', function (t) {
 	stepper(2);
 	stepper(3);
 
+	t.equal(stepper.getStep(), 3);
+
 	t.end();
 });
 
 test('stepperbox - reset step', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	var stepper = stepperbox();
 	stepper.add(function (value) {
@@ -108,11 +116,13 @@ test('stepperbox - reset step', function (t) {
 	// stepper(1);
 	stepper(2);
 
+	t.equal(stepper.getStep(), 2);
+
 	t.end();
 });
 
 test('stepperbox - reset step', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	var stepper = stepperbox();
 	stepper.add(function (value) {
@@ -128,11 +138,13 @@ test('stepperbox - reset step', function (t) {
 	stepper(1);
 	stepper(2);
 
+	t.equal(stepper.getStep(), 2);
+
 	t.end();
 });
 
 test('stepperbox - reset all', function (t) {
-	t.plan(2);
+	t.plan(3);
 
 	var stepper = stepperbox();
 	stepper.add(function (value) {
@@ -148,11 +160,13 @@ test('stepperbox - reset all', function (t) {
 
 	stepper(2);
 
+	t.equal(stepper.getStep(), 1);
+
 	t.end();
 });
 
 test('stepperbox - reset with array', function (t) {
-	t.plan(2);
+	t.plan(3);
 
 	var stepper = stepperbox();
 	stepper.add(function (value) {
@@ -168,11 +182,13 @@ test('stepperbox - reset with array', function (t) {
 
 	stepper(2);
 
+	t.equal(stepper.getStep(), 1);
+
 	t.end();
 });
 
 test('stepperbox - throws when called too much', function (t) {
-	t.plan(2);
+	t.plan(3);
 
 	var stepper = stepperbox();
 	stepper.add(function (value) {
@@ -184,11 +200,13 @@ test('stepperbox - throws when called too much', function (t) {
 		stepper(2);
 	}, {message: 'Stepper was called too many times. Offending arguments:\n index: 0 value: 2'});
 
+	t.equal(stepper.getStep(), 2);
+
 	t.end();
 });
 
 test('stepperbox - return values', function (t) {
-	t.plan(2);
+	t.plan(3);
 
 	var stepper = stepperbox();
 	stepper.add(function (as, value) {
@@ -201,11 +219,13 @@ test('stepperbox - return values', function (t) {
 	t.equal(stepper(), 5, 'returned the return value of step 1.');
 	t.equal(stepper(), 'foo', 'returned the return value of step 2.');
 
+	t.equal(stepper.getStep(), 2);
+
 	t.end();
 });
 
 test('stepperbox - as', function (t) {
-	t.plan(3);
+	t.plan(4);
 
 	var stepper = stepperbox();
 	stepper.add(function (as, value) {
@@ -220,6 +240,8 @@ test('stepperbox - as', function (t) {
 	var stub = stepper.as('someFunction');
 	stub(1);
 	stepper(2);
+
+	t.equal(stepper.getStep(), 2);
 
 	t.end();
 });
