@@ -23,6 +23,6 @@
     "url": "https://github.com/ChiperSoft/stepperbox.git"
   },
   "devDependencies": {
-    "tap": "~5.7.0"
+    "tap": "~8.0.0"
   }
 }
