@@ -1,3 +1,9 @@
+1.4.0 / 2018-10-27
+==================
+
+  * Added stepper.getCount() to fetch total steps
+  * Added stepper.onDone(fn) to provide a callback for when the stepper finishes
+
 1.3.0 / 2016-07-11
 ==================
 

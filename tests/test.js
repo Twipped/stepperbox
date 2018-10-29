@@ -245,3 +245,32 @@ test('stepperbox - as', function (t) {
 
 	t.end();
 });
+
+test('stepperbox - onDone', function (t) {
+	t.plan(5);
+
+	var stepper = stepperbox();
+
+	stepper
+		.add(function () {
+			t.ok(1, 'step 1');
+		})
+		.add(function () {
+			t.ok(2, 'step 2');
+		})
+		.add(function () {
+			t.ok(3, 'step 3');
+		})
+		.onDone(function () {
+			t.ok(true, 'called done')
+		})
+	;
+
+	stepper(1);
+	stepper(2);
+	stepper(3);
+
+	t.equal(stepper.getStep(), 3);
+
+	t.end();
+});

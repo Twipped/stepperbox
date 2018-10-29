@@ -71,6 +71,10 @@ Inserts a callback step at the specified index (0 based) in the sequence.
 
 Syntactic sugar for `onCall`. Inserts a callback step at the first, second or third positions, respectively.
 
+#### `stepper.onDone(callback)`
+
+Defines a callback to be invoked after the last step. Can be called multiple times to add more callbacks. Is reset by `stepper.reset(<truthy>)`
+
 #### `stepper.reset()`
 
 Resets the stepper position to the first step.
@@ -86,3 +90,7 @@ Resets the stepper position, and overwrites all existing steps with the callback
 #### `stepper.getStep()`
 
 Returns the current step position as a zero based integer.
+
+#### `stepper.getCount()`
+
+Returns the total number of steps currently on the stepper
